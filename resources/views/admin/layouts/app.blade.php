@@ -1,91 +1,108 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-layout-mode="detached" data-topbar-color="dark" data-menu-color="light" data-sidenav-user="true">
 
+
+<!-- Mirrored from coderthemes.com/hyper_2/modern/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 25 Jul 2024 09:55:58 GMT -->
 <head>
-    <meta charset="utf-8">
-    <title>DASHMIN - Bootstrap Admin Template</title>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="" name="keywords">
-    <meta content="" name="description">
+    <meta charset="utf-8" />
+    <title>Dashboard | Hyper - Responsive Bootstrap 5 Admin Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
+    <meta content="Coderthemes" name="author" />
 
-    <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="{{ asset('assets/images/favicon.ico')}}">
 
-    <!-- Google Web Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Icon Font Stylesheet -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Daterangepicker css -->
+    <link href="{{ asset('assets/vendor/daterangepicker/daterangepicker.css') }}" rel="stylesheet" type="text/css">
 
-    <!-- Libraries Stylesheet -->
-    <link href="{{ asset('assets/lib/owlcarousel/assets/owl.carousel.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css') }}" rel="stylesheet" />
+    <!-- Vector Map css -->
+    <link href="{{ asset('assets/vendor/jsvectormap/css/jsvectormap.min.css') }}" rel="stylesheet" type="text/css">
 
-    <!-- Customized Bootstrap Stylesheet -->
-    <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
+    <!-- Theme Config Js -->
+    <script src="{{ asset('assets/js/hyper-config.js') }}"></script>
 
-    <!-- Template Stylesheet -->
-    <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
+    <!-- App css -->
+    <link href="{{ asset('assets/css/app-modern.min.css') }}" rel="stylesheet" type="text/css" id="app-style" />
+
+    <!-- Icons css -->
+    <link href="{{ asset('assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
 
     @yield('styles')
-
 </head>
 
 <body>
-    <div class="container-xxl position-relative bg-white d-flex p-0">
-        <!-- Spinner Start -->
-        <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
-            <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
-                <span class="sr-only">Loading...</span>
-            </div>
-        </div>
-        <!-- Spinner End -->
+    <!-- Begin page -->
+    <div class="wrapper">
 
+        
+        <!-- ========== Topbar Start ========== -->
+        @include('admin.layouts.components.navbar')
+        <!-- ========== Topbar End ========== -->
 
-        <!-- Sidebar Start -->
+        <!-- ========== Left Sidebar Start ========== -->
         @include('admin.layouts.components.sidebar')
-        <!-- Sidebar End -->
+        <!-- ========== Left Sidebar End ========== -->
+        
 
+        <!-- ============================================================== -->
+        <!-- Start Page Content here -->
+        <!-- ============================================================== -->
 
-        <!-- Content Start -->
-        <div class="content">
-            <!-- Navbar Start -->
-            @include('admin.layouts.components.navbar')
-            <!-- Navbar End -->
+        <div class="content-page">
+            <div class="content">
 
-            @yield('content')
+                <!-- Start Content-->
+                <div class="container-fluid">
 
+                    @yield('content')
+                    <!-- end row -->
+
+                </div>
+                <!-- container -->
+
+            </div>
+            <!-- content -->
 
             <!-- Footer Start -->
             @include('admin.layouts.components.footer')
-            <!-- Footer End -->
+            <!-- end Footer -->
+
         </div>
-        <!-- Content End -->
 
+        <!-- ============================================================== -->
+        <!-- End Page content -->
+        <!-- ============================================================== -->
 
-        <!-- Back to Top -->
-        <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
     </div>
+    <!-- END wrapper -->
 
-    <!-- JavaScript Libraries -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="{{ asset('assets/lib/chart/chart.min.js') }}"></script>
-    <script src="{{ asset('assets/lib/easing/easing.min.js') }}"></script>
-    <script src="{{ asset('assets/lib/waypoints/waypoints.min.js') }}"></script>
-    <script src="{{ asset('assets/lib/owlcarousel/owl.carousel.min.js') }}"></script>
-    <script src="{{ asset('assets/lib/tempusdominus/js/moment.min.js') }}"></script>
-    <script src="{{ asset('assets/lib/tempusdominus/js/moment-timezone.min.js') }}"></script>
-    <script src="{{ asset('assets/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js') }}"></script>
+    <!-- Theme Settings -->
+    @include('admin.layouts.components.themebar')
+    
+    <!-- Vendor js -->
+    <script src="{{ asset('assets/js/vendor.min.js') }}"></script>
 
-    <!-- Template Javascript -->
-    <script src="{{ asset('assets/js/main.js') }}"></script>
+    <!-- Daterangepicker js -->
+    <script src="{{ asset('assets/vendor/daterangepicker/moment.min.js') }}"></script>
+    <script src="{{ asset('assets/vendor/daterangepicker/daterangepicker.js') }}"></script>
 
-    @yield('script')
+    <!-- Apex Charts js -->
+    {{-- <script src="{{ asset('assets/vendor/apexcharts/apexcharts.min.js') }}"></script> --}}
+
+    <!-- Vector Map js -->
+    <script src="{{ asset('assets/vendor/jsvectormap/js/jsvectormap.min.js') }}"></script>
+    <script src="{{ asset('assets/vendor/jsvectormap/maps/world-merc.js') }}"></script>
+    <script src="{{ asset('assets/vendor/jsvectormap/maps/world.js') }}"></script>
+    <!-- Dashboard App js -->
+    {{-- <script src="{{ asset('assets/js/pages/demo.dashboard.js') }}"></script> --}}
+
+    <!-- App js -->
+    <script src="{{ asset('assets/js/app.min.js') }}"></script>
+    @yield('scripts')
 
 </body>
+
 
 </html>
