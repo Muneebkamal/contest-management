@@ -1,99 +1,122 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-layout-mode="detached" data-topbar-color="dark" data-menu-color="light" data-sidenav-user="true">
 
+
+<!-- Mirrored from coderthemes.com/hyper_2/modern/pages-login.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 25 Jul 2024 09:57:48 GMT -->
 <head>
-    <meta charset="utf-8">
-    <title>DASHMIN - Bootstrap Admin Template</title>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="" name="keywords">
-    <meta content="" name="description">
+    <meta charset="utf-8" />
+    <title>Log In | Hyper - Responsive Bootstrap 5 Admin Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
+    <meta content="Coderthemes" name="author" />
 
-    <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="{{ asset('assets/images/favicon.ico') }}">
 
-    <!-- Google Web Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Icon Font Stylesheet -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Theme Config Js -->
+    <script src="{{ asset('assets/js/hyper-config.js') }}"></script>
 
-    <!-- Libraries Stylesheet -->
-    <link href="{{ asset('assets/lib/owlcarousel/assets/owl.carousel.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css') }}" rel="stylesheet" />
+    <!-- App css -->
+    <link href="{{ asset('assets/css/app-modern.min.css') }}" rel="stylesheet" type="text/css" id="app-style" />
 
-    <!-- Customized Bootstrap Stylesheet -->
-    <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
-
-    <!-- Template Stylesheet -->
-    <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
+    <!-- Icons css -->
+    <link href="{{ asset('assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
 </head>
 
-<body>
-    <div class="container-xxl position-relative bg-white d-flex p-0">
-        <!-- Spinner Start -->
-        <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
-            <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
-                <span class="sr-only">Loading...</span>
-            </div>
-        </div>
-        <!-- Spinner End -->
-
-
-        <!-- Sign In Start -->
-        <div class="container-fluid">
-            <div class="row h-100 align-items-center justify-content-center" style="min-height: 100vh;">
-                <div class="col-12 col-sm-8 col-md-6 col-lg-5 col-xl-4">
-                    <div class="bg-light rounded p-4 p-sm-5 my-4 mx-3">
-                        <div class="d-flex align-items-center justify-content-between mb-3">
-                            <a href="index.html" class="">
-                                <h3 class="text-primary"><i class="fa fa-hashtag me-2"></i>DASHMIN</h3>
-                            </a>
-                            <h3>Sign In</h3>
-                        </div>
-                        <form action="{{ route('postlogin') }}" method="POST">
-                            @csrf
-                            <div class="form-floating mb-3">
-                                <input type="email" class="form-control" id="floatingInput" name="email" placeholder="name@example.com">
-                                <label for="floatingInput">Email address</label>
-                            </div>
-                            <div class="form-floating mb-4">
-                                <input type="password" class="form-control" name="password" id="floatingPassword" placeholder="Password">
-                                <label for="floatingPassword">Password</label>
-                            </div>
-                            <div class="d-flex align-items-center justify-content-between mb-4">
-                                <div class="form-check">
-                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                    <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                                </div>
-                                <a href="">Forgot Password</a>
-                            </div>
-                            <button type="submit" class="btn btn-primary py-3 w-100 mb-4">Sign In</button>
-                        </form>
-                        
-                        <p class="text-center mb-0">Don't have an Account? <a href="">Sign Up</a></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Sign In End -->
+<body class="authentication-bg position-relative">
+    <div class="position-absolute start-0 end-0 start-0 bottom-0 w-100 h-100">
+        <svg xmlns='http://www.w3.org/2000/svg' width='100%' height='100%' viewBox='0 0 800 800'>
+            <g fill-opacity='0.22'>
+                <circle style="fill: rgba(var(--ct-primary-rgb), 0.1);" cx='400' cy='400' r='600' />
+                <circle style="fill: rgba(var(--ct-primary-rgb), 0.2);" cx='400' cy='400' r='500' />
+                <circle style="fill: rgba(var(--ct-primary-rgb), 0.3);" cx='400' cy='400' r='300' />
+                <circle style="fill: rgba(var(--ct-primary-rgb), 0.4);" cx='400' cy='400' r='200' />
+                <circle style="fill: rgba(var(--ct-primary-rgb), 0.5);" cx='400' cy='400' r='100' />
+            </g>
+        </svg>
     </div>
+    <div class="account-pages pt-2 pt-sm-5 pb-4 pb-sm-5 position-relative">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-xxl-4 col-lg-5">
+                    <div class="card">
 
-    <!-- JavaScript Libraries -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="{{ asset('assets/lib/chart/chart.min.js') }}"></script>
-    <script src="{{ asset('assets/lib/easing/easing.min.js') }}"></script>
-    <script src="{{ asset('assets/lib/waypoints/waypoints.min.js') }}"></script>
-    <script src="{{ asset('assets/lib/owlcarousel/owl.carousel.min.js') }}"></script>
-    <script src="{{ asset('assets/lib/tempusdominus/js/moment.min.js') }}"></script>
-    <script src="{{ asset('assets/lib/tempusdominus/js/moment-timezone.min.js') }}"></script>
-    <script src="{{ asset('assets/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js') }}"></script>
+                        <!-- Logo -->
+                        <div class="card-header py-4 text-center bg-primary">
+                            <a href="index.html">
+                                <span><img src="{{ asset('assets/images/logo.png') }}" alt="logo" height="22"></span>
+                            </a>
+                        </div>
 
-    <!-- Template Javascript -->
-    <script src="{{ asset('assets/js/main.js') }}"></script>
+                        <div class="card-body p-4">
+
+                            <div class="text-center w-75 m-auto">
+                                <h4 class="text-dark-50 text-center pb-0 fw-bold">Sign In</h4>
+                                <p class="text-muted mb-4">Enter your email address and password to access admin panel.</p>
+                            </div>
+
+                            <form action="{{ route('postlogin') }}" method="POST">
+                                @csrf
+
+                                <div class="mb-3">
+                                    <label for="emailaddress" class="form-label">Email address</label>
+                                    <input class="form-control" name="email" type="email" id="emailaddress" required="" placeholder="Enter your email">
+                                </div>
+
+                                <div class="mb-3">
+                                    <a href="pages-recoverpw.html" class="text-muted float-end"><small>Forgot your password?</small></a>
+                                    <label for="password" class="form-label">Password</label>
+                                    <div class="input-group input-group-merge">
+                                        <input type="password" name="password" id="password" class="form-control" placeholder="Enter your password">
+                                        <div class="input-group-text" data-password="false">
+                                            <span class="password-eye"></span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="mb-3 mb-3">
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="checkbox-signin" checked>
+                                        <label class="form-check-label" for="checkbox-signin">Remember me</label>
+                                    </div>
+                                </div>
+
+                                <div class="mb-3 mb-0 text-center">
+                                    <button class="btn btn-primary" type="submit"> Log In </button>
+                                </div>
+
+                            </form>
+                        </div> <!-- end card-body -->
+                    </div>
+                    <!-- end card -->
+
+                    <div class="row mt-3">
+                        <div class="col-12 text-center">
+                            <p class="text-muted">Don't have an account? <a href="#" class="text-muted ms-1"><b>Sign Up</b></a></p>
+                        </div> <!-- end col -->
+                    </div>
+                    <!-- end row -->
+
+                </div> <!-- end col -->
+            </div>
+            <!-- end row -->
+        </div>
+        <!-- end container -->
+    </div>
+    <!-- end page -->
+
+    <footer class="footer footer-alt">
+        2024 -
+        <script>document.write(new Date().getFullYear())</script> © Hyper - Coderthemes.com
+    </footer>
+    <!-- Vendor js -->
+    <script src="{{ asset('assets/js/vendor.min.js') }}"></script>
+
+    <!-- App js -->
+    <script src="{{ asset('assets/js/app.min.js') }}"></script>
+
 </body>
 
+
+<!-- Mirrored from coderthemes.com/hyper_2/modern/pages-login.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 25 Jul 2024 09:57:48 GMT -->
 </html>

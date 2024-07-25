@@ -42,7 +42,7 @@
             </button>
 
             <!-- Topbar Search Form -->
-            <div class="app-search dropdown d-none d-lg-block">
+            {{-- <div class="app-search dropdown d-none d-lg-block">
                 <form>
                     <div class="input-group">
                         <input type="search" class="form-control dropdown-toggle" placeholder="Search..." id="top-search">
@@ -104,7 +104,7 @@
                         </a>
                     </div>
                 </div>
-            </div>
+            </div> --}}
         </div>
 
         <ul class="topbar-menu d-flex align-items-center gap-3">
@@ -119,7 +119,7 @@
                 </div>
             </li>
 
-            <li class="dropdown">
+            {{-- <li class="dropdown">
                 <a class="nav-link dropdown-toggle arrow-none" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
                     <img src="assets/images/flags/us.jpg" alt="user-image" class="me-0 me-sm-1" height="12">
                     <span class="align-middle d-none d-lg-inline-block">English</span> <i class="mdi mdi-chevron-down d-none d-sm-inline-block align-middle"></i>
@@ -147,9 +147,9 @@
                     </a>
 
                 </div>
-            </li>
+            </li> --}}
 
-            <li class="dropdown notification-list">
+            {{-- <li class="dropdown notification-list">
                 <a class="nav-link dropdown-toggle arrow-none" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
                     <i class="ri-notification-3-line font-22"></i>
                     <span class="noti-icon-badge"></span>
@@ -277,9 +277,9 @@
                     </a>
 
                 </div>
-            </li>
+            </li> --}}
 
-            <li class="dropdown d-none d-sm-inline-block">
+            {{-- <li class="dropdown d-none d-sm-inline-block">
                 <a class="nav-link dropdown-toggle arrow-none" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
                     <i class="ri-apps-2-line font-22"></i>
                 </a>
@@ -330,7 +330,7 @@
                     </div>
 
                 </div>
-            </li>
+            </li> --}}
 
             <li class="d-none d-sm-inline-block">
                 <a class="nav-link" data-bs-toggle="offcanvas" href="#theme-settings-offcanvas">
@@ -392,10 +392,15 @@
                     </a>
 
                     <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item">
+                    <a class="dropdown-item" onclick="event.preventDefault();
+                        document.getElementById('logout-form').submit();" aria-expanded="false">
+                        {{-- <a href="javascript:void(0);" > --}}
                         <i class="mdi mdi-logout me-1"></i>
                         <span>Logout</span>
                     </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                    </form>
                 </div>
             </li>
         </ul>
