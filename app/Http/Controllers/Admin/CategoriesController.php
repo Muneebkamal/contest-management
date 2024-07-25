@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Categories;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CategoriesController extends Controller
 {
@@ -12,7 +14,8 @@ class CategoriesController extends Controller
      */
     public function index()
     {
-        return view('admin.categories.categories');
+        $categories = Categories::all();
+        return view('admin.categories.categories', compact('categories'));
     }
 
     /**
@@ -20,7 +23,8 @@ class CategoriesController extends Controller
      */
     public function create()
     {
-        //
+
+        return view('admin.categories.add-categories');
     }
 
     /**
@@ -28,7 +32,16 @@ class CategoriesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $userId = auth()->id();
+
+        $category = new Categories;
+        $category->name = $request->categories;
+        $category->created_by = $userId;
+
+        $category->save();
+
+        return redirect('categories');
+
     }
 
     /**
@@ -44,7 +57,8 @@ class CategoriesController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $category = Categories::where('id', $id)->first();
+        return view('admin.categories.edit-categories', compact('category'));
     }
 
     /**
@@ -52,7 +66,14 @@ class CategoriesController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $userId = auth()->id();
+        $category = Categories::where('id', $id)->first();
+
+        $category->name = $request->categories;
+        $category->updated_by = $userId;
+        $category->save();
+
+        return redirect('categories');
     }
 
     /**

@@ -10,10 +10,10 @@
                     <ol class="breadcrumb m-0">
                         {{-- <li class="breadcrumb-item"><a href="javascript: void(0);">Hyper</a></li> --}}
                         <li class="breadcrumb-item"><a href="javascript: void(0);">Categories</a></li>
-                        <li class="breadcrumb-item active">Add Categories</li>
+                        <li class="breadcrumb-item active">Edit Categories</li>
                     </ol>
                 </div>
-                <h4 class="page-title">Add Categories</h4>
+                <h4 class="page-title">Edit Categories</h4>
             </div>
         </div>
     </div>
@@ -23,14 +23,14 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <form action="{{ route('categories.store') }}" method="POST">
+                    <form action="{{ route('categories.update', $category->id) }}" method="POST">
                         @csrf
                         <div class="mb-3">
                             <label for="categories" class="form-label">Text</label>
-                            <input type="text" id="categories" name="categories" class="form-control">
+                            <input type="text" value="{{ $category->name }}" id="categories" name="categories" class="form-control">
                         </div>
 
-                        <button type="submit" class="btn btn-primary">Add Category</button>
+                        <button type="submit" class="btn btn-primary"> Edit </button>
                     </form>
                 </div> <!-- end card body-->
             </div> <!-- end card -->
