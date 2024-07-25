@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\CategoriesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,3 +35,5 @@ Route::post('/contest-store', [App\Http\Controllers\Admin\ContestController::cla
 Route::get('/contest-show/{id}', [App\Http\Controllers\Admin\ContestController::class, 'show'])->name('contest.show');
 Route::post('/contest-update/{id}', [App\Http\Controllers\Admin\ContestController::class, 'update'])->name('contest.update');
 Route::post('/contest-delete/{id}', [App\Http\Controllers\Admin\ContestController::class, 'destroy'])->name('contest.delete');
+
+Route::resource('categories', CategoriesController::class);

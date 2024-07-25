@@ -45,7 +45,43 @@
 
             <li class="side-nav-title">Navigation</li>
 
+            {{-- <li class="side-nav-item">
+                <a data-bs-toggle="collapse" href="#sidebarDashboards" aria-expanded="false" aria-controls="sidebarDashboards" class="side-nav-link">
+                    <i class="uil-home-alt"></i>
+                    <span class="badge bg-success float-end">2</span>
+                    <span>Contest Management</span>
+                </a>
+                <div class="collapse" id="sidebarDashboards">
+                    <ul class="side-nav-second-level">
+                        <li>
+                            <a href="{{ url('/contest') }}">Contest</a>
+                        </li>
+                        <li>
+                            <a href="#">Categories</a>
+                        </li>
+                    </ul>
+                </div>
+            </li> --}}
+            
             <li class="side-nav-item">
+                <a data-bs-toggle="collapse" href="#sidebarMaps" aria-expanded="false" aria-controls="sidebarMaps" class="side-nav-link">
+                    <i class="uil-home-alt"></i>
+                    <span> Contest Management </span>
+                    <span class="menu-arrow"></span>
+                </a>
+                <div class="collapse" id="sidebarMaps">
+                    <ul class="side-nav-second-level">
+                        <li>
+                            <a href="{{ url('/contest') }}">Contest</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('categories.index') }}">Categories</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+
+            {{-- <li class="side-nav-item">
                 <a data-bs-toggle="collapse" href="#sidebarDashboards" aria-expanded="false" aria-controls="sidebarDashboards" class="side-nav-link">
                     <i class="uil-home-alt"></i>
                     <span class="badge bg-success float-end">5</span>
@@ -748,11 +784,11 @@
                         </li>
                     </ul>
                 </div>
-            </li>
+            </li> --}}
 
 
             <!-- Help Box -->
-            <div class="help-box text-white text-center">
+            {{-- <div class="help-box text-white text-center">
                 <a href="javascript: void(0);" class="float-end close-btn text-white">
                     <i class="mdi mdi-close"></i>
                 </a>
@@ -760,7 +796,7 @@
                 <h5 class="mt-3">Unlimited Access</h5>
                 <p class="mb-3">Upgrade to plan to get access to unlimited reports</p>
                 <a href="javascript: void(0);" class="btn btn-secondary btn-sm">Upgrade</a>
-            </div>
+            </div> --}}
             <!-- end Help Box -->
 
 
