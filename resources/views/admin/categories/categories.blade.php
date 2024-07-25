@@ -21,7 +21,7 @@
 
     <div class="row">
         <div class="col-md-12 text-end mb-2">
-            <a href="" class="btn btn-primary">Add Categories</a>
+            <a href="{{ route('categories.create') }}" class="btn btn-primary">Add Categories</a>
         </div>
         <div class="col-12">
             <div class="card">
