@@ -24,17 +24,18 @@
             <div class="card">
                 <div class="card-body">
                     <form action="{{ route('categories.update', $category->id) }}" method="POST">
+                        @method('PATCH')
                         @csrf
                         <div class="mb-3">
                             <label for="categories" class="form-label">Text</label>
-                            <input type="text" value="{{ $category->name }}" id="categories" name="categories" class="form-control">
+                            <input type="text" value="{{ $category->name }}" id="categories" name="name" class="form-control">
                         </div>
-
-                        <button type="submit" class="btn btn-primary"> Edit </button>
+                        <button type="submit" class="btn btn-primary">Edit</button>
                     </form>
+                    
                 </div> <!-- end card body-->
             </div> <!-- end card -->
-        </div><!-- end col-->
+        </div>
     </div> 
     <!-- end row-->
 

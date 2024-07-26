@@ -15,7 +15,7 @@ class CategoriesController extends Controller
     public function index()
     {
         $categories = Categories::all();
-        return view('admin.categories.categories', compact('categories'));
+        return view('admin.categories.index', compact('categories'));
     }
 
     /**
@@ -23,7 +23,6 @@ class CategoriesController extends Controller
      */
     public function create()
     {
-
         return view('admin.categories.add-categories');
     }
 
@@ -32,7 +31,7 @@ class CategoriesController extends Controller
      */
     public function store(Request $request)
     {
-        $userId = auth()->id();
+        $userId = \auth()->user()->id;
 
         $category = new Categories;
         $category->name = $request->categories;
@@ -66,10 +65,11 @@ class CategoriesController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        // dd($request->input('name'));
         $userId = auth()->id();
         $category = Categories::where('id', $id)->first();
 
-        $category->name = $request->categories;
+        $category->name = $request->input('name');
         $category->updated_by = $userId;
         $category->save();
 

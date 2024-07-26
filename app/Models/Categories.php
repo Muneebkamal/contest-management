@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Categories extends Model
 {
     use HasFactory;
+    protected $timestamp = true;
+    protected $fillable = [
+        'name',
+        'role',
+        'email',
+        'password',
+    ];
 }
