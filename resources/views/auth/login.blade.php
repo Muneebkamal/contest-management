@@ -34,6 +34,7 @@
         .custom-input:focus {
             border-color: red; /* Border color when input is focused */
             outline: none;
+            box-shadow: none
         }
 
         .btn-primary{
@@ -43,6 +44,13 @@
             font-weight: 600;
             font-size: 18px;
             border-radius: 16px;
+        }
+        .btn-primary:active,.btn-primary:focus{ 
+            background-color: rgb(95, 45, 98);
+
+        }
+        .btn-primary:focus{
+            box-shadow: none
         }
         .btn-primary:hover{
             background-color: black;
