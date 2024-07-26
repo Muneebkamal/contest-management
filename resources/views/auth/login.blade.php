@@ -1,4 +1,143 @@
-@extends('layouts.app')
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+     <!-- Bootstrap CSS -->
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+     <style>
+        .color-box{
+            background-color: red;
+            border-radius: 50%;
+            height: 100px;
+            width: 100px;
+        }
+        .side-img{
+            background-image: url('https://cdn.playgrnd.media/v7/img/icons/babies/auth-bg.jpg?w=960&h=1280&q=60');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+        }
+        .custom-input {
+            border: 2px solid black; /* Custom border color */
+            border-radius: 8px; /* Rounded corners */
+            padding: 15px; /* Padding inside the input */
+            width: 100%; /* Full width */
+            box-sizing: border-box; /* Ensure padding and border are included in the element's total width and height */
+        }
+        
+        .custom-input:focus {
+            border-color: red; /* Border color when input is focused */
+            outline: none;
+        }
+
+        .btn-primary{
+            background-color: rgb(95, 45, 98);
+            text-transform: none;
+            box-shadow: none;
+            font-weight: 600;
+            font-size: 18px;
+            border-radius: 16px;
+        }
+        .btn-primary:hover{
+            background-color: black;
+            text-transform: none;
+            box-shadow: none;
+            font-weight: 600;
+            font-size: 18px;
+            border-radius: 16px;
+        }
+     </style>
+</head>
+<body>
+    <div class="container-fluid ps-0">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="side-img">
+                    {{-- <img class="img-fluid" src="https://cdn.playgrnd.media/v7/img/icons/babies/auth-bg.jpg?w=960&h=1280&q=60" alt=""> --}}
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="row d-flex justify-content-center">
+                    <div class="col-md-12 d-flex justify-content-center">
+                        <div class="content mt-2">
+                            <div class="brand d-flex justify-content-center">
+                                <div class="color-box mb-5">
+                                    <img  class="img-fluid p-2" src="https://cdn.playgrnd.media/v7/img/icons/babies/icon-transparent.png?sharp=0&sat=100&w=240&h=240" alt="">
+                                </div>
+                            </div>
+                            <h3 class="text-center">Welcome to Bidiboo</h3>
+                            <div class="d-flex mb-5 text-center">
+                                <h5 class="">New to Bidiboo?</h5>&nbsp
+                                <a class="text-danger text-decoration-none"><h5>Create an account</h5></a>
+                            </div>
+                            
+
+                            <div class="login-form d-flex justify-content-center">
+                                <form class="w-100" method="POST" action="{{ route('login') }}">
+                                    @csrf
+        
+                                    <div class="mb-3">
+                                        <input id="email" placeholder="Email address" type="email" class="custom-input form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+    
+                                        @error('email')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+    
+                                    <div class="mb-3">
+                                        <input id="password" placeholder="Password" type="password" class="custom-input form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+    
+                                        @error('password')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                
+                                    <div class="mb-3">
+                                        <button type="submit" class="btn btn-primary py-2 w-100">Sign in</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="https://cdn-script.com/ajax/libs/jquery/3.7.1/jquery.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{{-- @extends('layouts.app')
 
 @section('content')
 <div class="container">
@@ -70,4 +209,4 @@
         </div>
     </div>
 </div>
-@endsection
+@endsection --}}
