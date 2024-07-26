@@ -46,7 +46,6 @@
                                         <button
                                             data-bs-toggle="tooltip"
                                             title="Edit"
-                                            href="{{ url('/contest-show',$contest->id) }}"
                                             class="btn btn-danger p-1 py-0"
                                         >
                                             <i class="uil-trash" data-bs-toggle="tooltip" title="Delete"></i>
