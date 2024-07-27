@@ -30,6 +30,9 @@ Route::post('/postlogin', [App\Http\Controllers\Admin\AuthController::class, 'po
 Route::get('/dashboard', function () {
     return view('admin.dashboard');
 });
+Route::get('/index', function () {
+    return view('front.index');
+});
 
 Route::get('/contest', [ContestController::class, 'index'])->name('contest');
 Route::get('/contest-add', [ContestController::class, 'create'])->name('contest.add');
