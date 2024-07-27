@@ -65,7 +65,7 @@
         </style>
 </head>
 <body>
-    <div class="container-fluid ps-0">
+    <div class="container-fluid px-0" style="overflow: hidden;">
         @yield('auth-content')
     </div>
 

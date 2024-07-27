@@ -17,9 +17,9 @@ use App\Http\Controllers\Admin\ContestController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Auth::routes();
 
@@ -30,7 +30,7 @@ Route::post('/postlogin', [App\Http\Controllers\Admin\AuthController::class, 'po
 Route::get('/dashboard', function () {
     return view('admin.dashboard');
 });
-Route::get('/index', function () {
+Route::get('/', function () {
     return view('front.index');
 });
 
