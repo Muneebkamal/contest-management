@@ -33,7 +33,12 @@ Route::get('/dashboard', function () {
 Route::get('/', function () {
     return view('front.index');
 });
-
+Route::get('/participate', function () {
+    return view('front.participate');
+});
+Route::get('/contest-front', function () {
+    return view('front.contest');
+});
 Route::get('/contest', [ContestController::class, 'index'])->name('contest');
 Route::get('/contest-add', [ContestController::class, 'create'])->name('contest.add');
 Route::post('/contest-store', [ContestController::class, 'store'])->name('contest.store');
