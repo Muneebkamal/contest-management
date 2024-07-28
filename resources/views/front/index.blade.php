@@ -56,6 +56,9 @@
         .rating {
             color: #ffc107;
         }
+        .rating .fa-star {
+            font-size: 12px; /* Adjust the size as needed */
+        }
         .avatar img {
             width: 40px;
             height: 40px;
@@ -90,6 +93,7 @@
     /* Active navbar style */
     .navbar-custom.active {
         background-color: #ff0048; /* Active background color */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.308);
     }
 
     .navbar-custom.active .nav-link,
@@ -135,9 +139,6 @@
     .text-primary{
         color: #ff0048 !important;
     }
-    .btn-home{
-        padding-top
-    }
     .home-text{
         font-weight: 700;
         font-size: 32px;
@@ -172,19 +173,21 @@
     .owl-stage-outer{
         padding: 0 0 0 3rem
     }
+    @media (min-width: 768px) {
+        .w-md-25 {
+            width: 25% !important;
+        }
+    }
 </style>
 @endsection
 
 @section('auth-content')
 
-    <nav class="navbar navbar-expand-lg navbar-custom fixed-top px-3">
+    <!-- Navbar for large screens -->
+    <nav class="navbar navbar-expand-lg navbar-custom fixed-top px-3 d-none d-lg-block">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
-                {{-- <img id="logo-default" alt="Bidiboo Logo Default" 
-                    src="https://cdn.playgrnd.media/v7/img/icons/babies/BUS/logo-desktop-app-bar.png?w=180">
-                <img id="logo-active" alt="Bidiboo Logo Active" 
-                    src="https://cdn.playgrnd.media/v7/img/icons/babies/BUS/logo-desktop-app-bar-active.png?w=180"> --}}
-                    <h2>LOGO</h2>
+                <h2>LOGO</h2>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -208,6 +211,42 @@
             </div>
         </div>
     </nav>
+
+    <!-- Bottom navigation for mobile and tablet views -->
+    <div class="container-fluid fixed-top bg-light shadow p-2 d-lg-none w-100">
+        <a class="text-dark text-center text-decoration-none" href="#">
+            <h2 class="m-0">LOGO</h2>
+        </a>
+    </div>
+    <div class="container-fluid fixed-bottom bg-light shadow p-2 d-lg-none">
+        <div class="row text-center mx-3">
+            <div class="col">
+                <a class="text-dark" href="/">
+                    <i class="bi bi-house bottom-nav-icon"></i>
+                </a>
+            </div>
+            <div class="col">
+                <a class="text-dark" href="/search">
+                    <i class="bi bi-search bottom-nav-icon"></i>
+                </a>
+            </div>
+            <div class="col">
+                <a class="text-dark" href="/participate">
+                    <i class="bi bi-plus-circle bottom-nav-icon"></i>
+                </a>
+            </div>
+            <div class="col">
+                <a class="text-dark" href="/contests">
+                    <i class="bi bi-trophy bottom-nav-icon"></i>
+                </a>
+            </div>
+            <div class="col">
+                <a class="text-decoration-none text-dark" href="#">
+                    <i class="bi bi-person-circle bottom-nav-icon"></i>
+                </a>
+            </div>
+        </div>
+    </div>
 
 
 {{-- HOME SECTION --}}
@@ -238,7 +277,7 @@
         </div>
     </section>
 
-{{-- SECTION 2 --}}
+    {{-- SECTION 2 --}}
     <section class="pb-5" style="background: #f7f7f7;">
         <div class="mx-3 mt-2 d-flex justify-content-between align-items-center">
             <h3 class="mb-0">They won!</h3>
@@ -251,16 +290,19 @@
 
         <div class="owl-carousel owl-theme">
             <div class="item">
-                <div class="container mt-4">
+                <div class="card p-3 mt-4" style="border: none; border-radius: 20px; overflow: hidden;">
                     <div class="d-flex align-items-center">
                         <div class="avatar me-3">
-                            <a href="/member/melk">
+                            <a href="#" class="w-100">
                                 <img src="https://cdn.playgrnd.media/v7/img/ph/usr_28b5b6f6-8f90-467c-8975-3c763be26229/ph_ee540cfd-4823-414b-b90d-a1ce3ecbf840.jpg?w=40&amp;h=40&amp;fm=jpg" srcset="https://cdn.playgrnd.media/v7/img/ph/usr_28b5b6f6-8f90-467c-8975-3c763be26229/ph_ee540cfd-4823-414b-b90d-a1ce3ecbf840.jpg?w=40&amp;h=40&amp;fm=jpg 1x, https://cdn.playgrnd.media/v7/img/ph/usr_28b5b6f6-8f90-467c-8975-3c763be26229/ph_ee540cfd-4823-414b-b90d-a1ce3ecbf840.jpg?w=80&amp;h=80&amp;fm=jpg 2x" sizes="40" alt="Mel K.">
                             </a>
                         </div>
-                        <div>
-                            <div>
-                                <a href="/testimonials/tsl_690f7f55-0f17-4440-9e3d-c9e5618910bf_16015">Mel K.</a>
+                        <div class="w-75">
+                            <div class="d-flex justify-content-between">
+                                <a href="#" class="text-decoration-none text-dark fw-bold">Mel K.</a>
+                                <div>
+                                    <span class="badge bg-success">$150</span>
+                                </div>
                             </div>
                             <div class="rating">
                                 <i class="fas fa-star"></i>
@@ -269,208 +311,29 @@
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i>
                             </div>
-                            <div>
-                                <span class="badge bg-secondary">$150</span>
-                            </div>
+                            
                         </div>
                     </div>
                     <div class="mt-3">
                         Happy with the competition so Easy and quick payment 😀
                     </div>
-                    <div class="text-muted">93rd · Boy Contest · 14 days ago</div>
+                    <small class="text-muted ">93rd · Boy Contest · 14 days ago</small>
                 </div>
             </div>
             <div class="item">
-                <div class="container mt-4">
-                <div class="d-flex align-items-center">
-                    <div class="avatar me-3">
-                        <a href="/member/melk">
-                            <img src="https://cdn.playgrnd.media/v7/img/ph/usr_28b5b6f6-8f90-467c-8975-3c763be26229/ph_ee540cfd-4823-414b-b90d-a1ce3ecbf840.jpg?w=40&amp;h=40&amp;fm=jpg" srcset="https://cdn.playgrnd.media/v7/img/ph/usr_28b5b6f6-8f90-467c-8975-3c763be26229/ph_ee540cfd-4823-414b-b90d-a1ce3ecbf840.jpg?w=40&amp;h=40&amp;fm=jpg 1x, https://cdn.playgrnd.media/v7/img/ph/usr_28b5b6f6-8f90-467c-8975-3c763be26229/ph_ee540cfd-4823-414b-b90d-a1ce3ecbf840.jpg?w=80&amp;h=80&amp;fm=jpg 2x" sizes="40" alt="Mel K.">
-                        </a>
-                    </div>
-                    <div>
-                        <div>
-                            <a href="/testimonials/tsl_690f7f55-0f17-4440-9e3d-c9e5618910bf_16015">Mel K.</a>
-                        </div>
-                        <div class="rating">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <div>
-                            <span class="badge bg-secondary">$150</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="mt-3">
-                    Happy with the competition so Easy and quick payment 😀
-                </div>
-                <div class="text-muted">93rd · Boy Contest · 14 days ago</div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="container mt-4">
-                <div class="d-flex align-items-center">
-                    <div class="avatar me-3">
-                        <a href="/member/melk">
-                            <img src="https://cdn.playgrnd.media/v7/img/ph/usr_28b5b6f6-8f90-467c-8975-3c763be26229/ph_ee540cfd-4823-414b-b90d-a1ce3ecbf840.jpg?w=40&amp;h=40&amp;fm=jpg" srcset="https://cdn.playgrnd.media/v7/img/ph/usr_28b5b6f6-8f90-467c-8975-3c763be26229/ph_ee540cfd-4823-414b-b90d-a1ce3ecbf840.jpg?w=40&amp;h=40&amp;fm=jpg 1x, https://cdn.playgrnd.media/v7/img/ph/usr_28b5b6f6-8f90-467c-8975-3c763be26229/ph_ee540cfd-4823-414b-b90d-a1ce3ecbf840.jpg?w=80&amp;h=80&amp;fm=jpg 2x" sizes="40" alt="Mel K.">
-                        </a>
-                    </div>
-                    <div>
-                        <div>
-                            <a href="/testimonials/tsl_690f7f55-0f17-4440-9e3d-c9e5618910bf_16015">Mel K.</a>
-                        </div>
-                        <div class="rating">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <div>
-                            <span class="badge bg-secondary">$150</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="mt-3">
-                    Happy with the competition so Easy and quick payment 😀
-                </div>
-                <div class="text-muted">93rd · Boy Contest · 14 days ago</div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="container mt-4">
-                <div class="d-flex align-items-center">
-                    <div class="avatar me-3">
-                        <a href="/member/melk">
-                            <img src="https://cdn.playgrnd.media/v7/img/ph/usr_28b5b6f6-8f90-467c-8975-3c763be26229/ph_ee540cfd-4823-414b-b90d-a1ce3ecbf840.jpg?w=40&amp;h=40&amp;fm=jpg" srcset="https://cdn.playgrnd.media/v7/img/ph/usr_28b5b6f6-8f90-467c-8975-3c763be26229/ph_ee540cfd-4823-414b-b90d-a1ce3ecbf840.jpg?w=40&amp;h=40&amp;fm=jpg 1x, https://cdn.playgrnd.media/v7/img/ph/usr_28b5b6f6-8f90-467c-8975-3c763be26229/ph_ee540cfd-4823-414b-b90d-a1ce3ecbf840.jpg?w=80&amp;h=80&amp;fm=jpg 2x" sizes="40" alt="Mel K.">
-                        </a>
-                    </div>
-                    <div>
-                        <div>
-                            <a href="/testimonials/tsl_690f7f55-0f17-4440-9e3d-c9e5618910bf_16015">Mel K.</a>
-                        </div>
-                        <div class="rating">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <div>
-                            <span class="badge bg-secondary">$150</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="mt-3">
-                    Happy with the competition so Easy and quick payment 😀
-                </div>
-                <div class="text-muted">93rd · Boy Contest · 14 days ago</div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="container mt-4">
-                <div class="d-flex align-items-center">
-                    <div class="avatar me-3">
-                        <a href="/member/melk">
-                            <img src="https://cdn.playgrnd.media/v7/img/ph/usr_28b5b6f6-8f90-467c-8975-3c763be26229/ph_ee540cfd-4823-414b-b90d-a1ce3ecbf840.jpg?w=40&amp;h=40&amp;fm=jpg" srcset="https://cdn.playgrnd.media/v7/img/ph/usr_28b5b6f6-8f90-467c-8975-3c763be26229/ph_ee540cfd-4823-414b-b90d-a1ce3ecbf840.jpg?w=40&amp;h=40&amp;fm=jpg 1x, https://cdn.playgrnd.media/v7/img/ph/usr_28b5b6f6-8f90-467c-8975-3c763be26229/ph_ee540cfd-4823-414b-b90d-a1ce3ecbf840.jpg?w=80&amp;h=80&amp;fm=jpg 2x" sizes="40" alt="Mel K.">
-                        </a>
-                    </div>
-                    <div>
-                        <div>
-                            <a href="/testimonials/tsl_690f7f55-0f17-4440-9e3d-c9e5618910bf_16015">Mel K.</a>
-                        </div>
-                        <div class="rating">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <div>
-                            <span class="badge bg-secondary">$150</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="mt-3">
-                    Happy with the competition so Easy and quick payment 😀
-                </div>
-                <div class="text-muted">93rd · Boy Contest · 14 days ago</div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="container mt-4">
-                <div class="d-flex align-items-center">
-                    <div class="avatar me-3">
-                        <a href="/member/melk">
-                            <img src="https://cdn.playgrnd.media/v7/img/ph/usr_28b5b6f6-8f90-467c-8975-3c763be26229/ph_ee540cfd-4823-414b-b90d-a1ce3ecbf840.jpg?w=40&amp;h=40&amp;fm=jpg" srcset="https://cdn.playgrnd.media/v7/img/ph/usr_28b5b6f6-8f90-467c-8975-3c763be26229/ph_ee540cfd-4823-414b-b90d-a1ce3ecbf840.jpg?w=40&amp;h=40&amp;fm=jpg 1x, https://cdn.playgrnd.media/v7/img/ph/usr_28b5b6f6-8f90-467c-8975-3c763be26229/ph_ee540cfd-4823-414b-b90d-a1ce3ecbf840.jpg?w=80&amp;h=80&amp;fm=jpg 2x" sizes="40" alt="Mel K.">
-                        </a>
-                    </div>
-                    <div>
-                        <div>
-                            <a href="/testimonials/tsl_690f7f55-0f17-4440-9e3d-c9e5618910bf_16015">Mel K.</a>
-                        </div>
-                        <div class="rating">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <div>
-                            <span class="badge bg-secondary">$150</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="mt-3">
-                    Happy with the competition so Easy and quick payment 😀
-                </div>
-                <div class="text-muted">93rd · Boy Contest · 14 days ago</div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="container mt-4">
-                <div class="d-flex align-items-center">
-                    <div class="avatar me-3">
-                        <a href="/member/melk">
-                            <img src="https://cdn.playgrnd.media/v7/img/ph/usr_28b5b6f6-8f90-467c-8975-3c763be26229/ph_ee540cfd-4823-414b-b90d-a1ce3ecbf840.jpg?w=40&amp;h=40&amp;fm=jpg" srcset="https://cdn.playgrnd.media/v7/img/ph/usr_28b5b6f6-8f90-467c-8975-3c763be26229/ph_ee540cfd-4823-414b-b90d-a1ce3ecbf840.jpg?w=40&amp;h=40&amp;fm=jpg 1x, https://cdn.playgrnd.media/v7/img/ph/usr_28b5b6f6-8f90-467c-8975-3c763be26229/ph_ee540cfd-4823-414b-b90d-a1ce3ecbf840.jpg?w=80&amp;h=80&amp;fm=jpg 2x" sizes="40" alt="Mel K.">
-                        </a>
-                    </div>
-                    <div>
-                        <div>
-                            <a href="/testimonials/tsl_690f7f55-0f17-4440-9e3d-c9e5618910bf_16015">Mel K.</a>
-                        </div>
-                        <div class="rating">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <div>
-                            <span class="badge bg-secondary">$150</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="mt-3">
-                    Happy with the competition so Easy and quick payment 😀
-                </div>
-                <div class="text-muted">93rd · Boy Contest · 14 days ago</div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="container mt-4">
+                <div class="card p-3 mt-4" style="border: none; border-radius: 20px; overflow: hidden;">
                     <div class="d-flex align-items-center">
                         <div class="avatar me-3">
-                            <a href="/member/melk">
+                            <a href="#" class="w-100">
                                 <img src="https://cdn.playgrnd.media/v7/img/ph/usr_28b5b6f6-8f90-467c-8975-3c763be26229/ph_ee540cfd-4823-414b-b90d-a1ce3ecbf840.jpg?w=40&amp;h=40&amp;fm=jpg" srcset="https://cdn.playgrnd.media/v7/img/ph/usr_28b5b6f6-8f90-467c-8975-3c763be26229/ph_ee540cfd-4823-414b-b90d-a1ce3ecbf840.jpg?w=40&amp;h=40&amp;fm=jpg 1x, https://cdn.playgrnd.media/v7/img/ph/usr_28b5b6f6-8f90-467c-8975-3c763be26229/ph_ee540cfd-4823-414b-b90d-a1ce3ecbf840.jpg?w=80&amp;h=80&amp;fm=jpg 2x" sizes="40" alt="Mel K.">
                             </a>
                         </div>
-                        <div>
-                            <div>
-                                <a href="/testimonials/tsl_690f7f55-0f17-4440-9e3d-c9e5618910bf_16015">Mel K.</a>
+                        <div class="w-75">
+                            <div class="d-flex justify-content-between">
+                                <a href="#" class="text-decoration-none text-dark fw-bold">Mel K.</a>
+                                <div>
+                                    <span class="badge bg-success">$150</span>
+                                </div>
                             </div>
                             <div class="rating">
                                 <i class="fas fa-star"></i>
@@ -479,15 +342,199 @@
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i>
                             </div>
-                            <div>
-                                <span class="badge bg-secondary">$150</span>
-                            </div>
+                            
                         </div>
                     </div>
                     <div class="mt-3">
                         Happy with the competition so Easy and quick payment 😀
                     </div>
-                    <div class="text-muted">93rd · Boy Contest · 14 days ago</div>
+                    <small class="text-muted ">93rd · Boy Contest · 14 days ago</small>
+                </div>
+            </div>
+            <div class="item">
+                <div class="card p-3 mt-4" style="border: none; border-radius: 20px; overflow: hidden;">
+                    <div class="d-flex align-items-center">
+                        <div class="avatar me-3">
+                            <a href="#" class="w-100">
+                                <img src="https://cdn.playgrnd.media/v7/img/ph/usr_28b5b6f6-8f90-467c-8975-3c763be26229/ph_ee540cfd-4823-414b-b90d-a1ce3ecbf840.jpg?w=40&amp;h=40&amp;fm=jpg" srcset="https://cdn.playgrnd.media/v7/img/ph/usr_28b5b6f6-8f90-467c-8975-3c763be26229/ph_ee540cfd-4823-414b-b90d-a1ce3ecbf840.jpg?w=40&amp;h=40&amp;fm=jpg 1x, https://cdn.playgrnd.media/v7/img/ph/usr_28b5b6f6-8f90-467c-8975-3c763be26229/ph_ee540cfd-4823-414b-b90d-a1ce3ecbf840.jpg?w=80&amp;h=80&amp;fm=jpg 2x" sizes="40" alt="Mel K.">
+                            </a>
+                        </div>
+                        <div class="w-75">
+                            <div class="d-flex justify-content-between">
+                                <a href="#" class="text-decoration-none text-dark fw-bold">Mel K.</a>
+                                <div>
+                                    <span class="badge bg-success">$150</span>
+                                </div>
+                            </div>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <div class="mt-3">
+                        Happy with the competition so Easy and quick payment 😀
+                    </div>
+                    <small class="text-muted ">93rd · Boy Contest · 14 days ago</small>
+                </div>
+            </div>
+            <div class="item">
+                <div class="card p-3 mt-4" style="border: none; border-radius: 20px; overflow: hidden;">
+                    <div class="d-flex align-items-center">
+                        <div class="avatar me-3">
+                            <a href="#" class="w-100">
+                                <img src="https://cdn.playgrnd.media/v7/img/ph/usr_28b5b6f6-8f90-467c-8975-3c763be26229/ph_ee540cfd-4823-414b-b90d-a1ce3ecbf840.jpg?w=40&amp;h=40&amp;fm=jpg" srcset="https://cdn.playgrnd.media/v7/img/ph/usr_28b5b6f6-8f90-467c-8975-3c763be26229/ph_ee540cfd-4823-414b-b90d-a1ce3ecbf840.jpg?w=40&amp;h=40&amp;fm=jpg 1x, https://cdn.playgrnd.media/v7/img/ph/usr_28b5b6f6-8f90-467c-8975-3c763be26229/ph_ee540cfd-4823-414b-b90d-a1ce3ecbf840.jpg?w=80&amp;h=80&amp;fm=jpg 2x" sizes="40" alt="Mel K.">
+                            </a>
+                        </div>
+                        <div class="w-75">
+                            <div class="d-flex justify-content-between">
+                                <a href="#" class="text-decoration-none text-dark fw-bold">Mel K.</a>
+                                <div>
+                                    <span class="badge bg-success">$150</span>
+                                </div>
+                            </div>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <div class="mt-3">
+                        Happy with the competition so Easy and quick payment 😀
+                    </div>
+                    <small class="text-muted ">93rd · Boy Contest · 14 days ago</small>
+                </div>
+            </div>
+            <div class="item">
+                <div class="card p-3 mt-4" style="border: none; border-radius: 20px; overflow: hidden;">
+                    <div class="d-flex align-items-center">
+                        <div class="avatar me-3">
+                            <a href="#" class="w-100">
+                                <img src="https://cdn.playgrnd.media/v7/img/ph/usr_28b5b6f6-8f90-467c-8975-3c763be26229/ph_ee540cfd-4823-414b-b90d-a1ce3ecbf840.jpg?w=40&amp;h=40&amp;fm=jpg" srcset="https://cdn.playgrnd.media/v7/img/ph/usr_28b5b6f6-8f90-467c-8975-3c763be26229/ph_ee540cfd-4823-414b-b90d-a1ce3ecbf840.jpg?w=40&amp;h=40&amp;fm=jpg 1x, https://cdn.playgrnd.media/v7/img/ph/usr_28b5b6f6-8f90-467c-8975-3c763be26229/ph_ee540cfd-4823-414b-b90d-a1ce3ecbf840.jpg?w=80&amp;h=80&amp;fm=jpg 2x" sizes="40" alt="Mel K.">
+                            </a>
+                        </div>
+                        <div class="w-75">
+                            <div class="d-flex justify-content-between">
+                                <a href="#" class="text-decoration-none text-dark fw-bold">Mel K.</a>
+                                <div>
+                                    <span class="badge bg-success">$150</span>
+                                </div>
+                            </div>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <div class="mt-3">
+                        Happy with the competition so Easy and quick payment 😀
+                    </div>
+                    <small class="text-muted ">93rd · Boy Contest · 14 days ago</small>
+                </div>
+            </div>
+            <div class="item">
+                <div class="card p-3 mt-4" style="border: none; border-radius: 20px; overflow: hidden;">
+                    <div class="d-flex align-items-center">
+                        <div class="avatar me-3">
+                            <a href="#" class="w-100">
+                                <img src="https://cdn.playgrnd.media/v7/img/ph/usr_28b5b6f6-8f90-467c-8975-3c763be26229/ph_ee540cfd-4823-414b-b90d-a1ce3ecbf840.jpg?w=40&amp;h=40&amp;fm=jpg" srcset="https://cdn.playgrnd.media/v7/img/ph/usr_28b5b6f6-8f90-467c-8975-3c763be26229/ph_ee540cfd-4823-414b-b90d-a1ce3ecbf840.jpg?w=40&amp;h=40&amp;fm=jpg 1x, https://cdn.playgrnd.media/v7/img/ph/usr_28b5b6f6-8f90-467c-8975-3c763be26229/ph_ee540cfd-4823-414b-b90d-a1ce3ecbf840.jpg?w=80&amp;h=80&amp;fm=jpg 2x" sizes="40" alt="Mel K.">
+                            </a>
+                        </div>
+                        <div class="w-75">
+                            <div class="d-flex justify-content-between">
+                                <a href="#" class="text-decoration-none text-dark fw-bold">Mel K.</a>
+                                <div>
+                                    <span class="badge bg-success">$150</span>
+                                </div>
+                            </div>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <div class="mt-3">
+                        Happy with the competition so Easy and quick payment 😀
+                    </div>
+                    <small class="text-muted ">93rd · Boy Contest · 14 days ago</small>
+                </div>
+            </div>
+            <div class="item">
+                <div class="card p-3 mt-4" style="border: none; border-radius: 20px; overflow: hidden;">
+                    <div class="d-flex align-items-center">
+                        <div class="avatar me-3">
+                            <a href="#" class="w-100">
+                                <img src="https://cdn.playgrnd.media/v7/img/ph/usr_28b5b6f6-8f90-467c-8975-3c763be26229/ph_ee540cfd-4823-414b-b90d-a1ce3ecbf840.jpg?w=40&amp;h=40&amp;fm=jpg" srcset="https://cdn.playgrnd.media/v7/img/ph/usr_28b5b6f6-8f90-467c-8975-3c763be26229/ph_ee540cfd-4823-414b-b90d-a1ce3ecbf840.jpg?w=40&amp;h=40&amp;fm=jpg 1x, https://cdn.playgrnd.media/v7/img/ph/usr_28b5b6f6-8f90-467c-8975-3c763be26229/ph_ee540cfd-4823-414b-b90d-a1ce3ecbf840.jpg?w=80&amp;h=80&amp;fm=jpg 2x" sizes="40" alt="Mel K.">
+                            </a>
+                        </div>
+                        <div class="w-75">
+                            <div class="d-flex justify-content-between">
+                                <a href="#" class="text-decoration-none text-dark fw-bold">Mel K.</a>
+                                <div>
+                                    <span class="badge bg-success">$150</span>
+                                </div>
+                            </div>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <div class="mt-3">
+                        Happy with the competition so Easy and quick payment 😀
+                    </div>
+                    <small class="text-muted ">93rd · Boy Contest · 14 days ago</small>
+                </div>
+            </div>
+            <div class="item">
+                <div class="card p-3 mt-4" style="border: none; border-radius: 20px; overflow: hidden;">
+                    <div class="d-flex align-items-center">
+                        <div class="avatar me-3">
+                            <a href="#" class="w-100">
+                                <img src="https://cdn.playgrnd.media/v7/img/ph/usr_28b5b6f6-8f90-467c-8975-3c763be26229/ph_ee540cfd-4823-414b-b90d-a1ce3ecbf840.jpg?w=40&amp;h=40&amp;fm=jpg" srcset="https://cdn.playgrnd.media/v7/img/ph/usr_28b5b6f6-8f90-467c-8975-3c763be26229/ph_ee540cfd-4823-414b-b90d-a1ce3ecbf840.jpg?w=40&amp;h=40&amp;fm=jpg 1x, https://cdn.playgrnd.media/v7/img/ph/usr_28b5b6f6-8f90-467c-8975-3c763be26229/ph_ee540cfd-4823-414b-b90d-a1ce3ecbf840.jpg?w=80&amp;h=80&amp;fm=jpg 2x" sizes="40" alt="Mel K.">
+                            </a>
+                        </div>
+                        <div class="w-75">
+                            <div class="d-flex justify-content-between">
+                                <a href="#" class="text-decoration-none text-dark fw-bold">Mel K.</a>
+                                <div>
+                                    <span class="badge bg-success">$150</span>
+                                </div>
+                            </div>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <div class="mt-3">
+                        Happy with the competition so Easy and quick payment 😀
+                    </div>
+                    <small class="text-muted ">93rd · Boy Contest · 14 days ago</small>
                 </div>
             </div>
         </div>
@@ -588,7 +635,7 @@
 
 
     {{-- SECTION 5 --}}
-    <section>
+    <section class="my-5">
         <div class="text-row my-3">
             <h2 class="text-center">Help them get their first votes!</h2>
             <h3 class="text-center text-primary">Start voting right now:</h3>
@@ -603,14 +650,16 @@
                             <img src="https://cdn.playgrnd.media/v7/img/ph/usr_44c0c8ff-09eb-43ab-a683-a1a39aca2a0c/chd_70dbd7e6-ed52-41e1-b80b-4c6a74042e44/ph_b32c1945-5d96-4520-bb33-66c7261f275d.jpg?w=3840&amp;h=3840&amp;q=45" 
                                  alt="Delilah" 
                                  class="card-img-top">
-                            <div class="card-body d-flex flex-column">
-                                <h5 class="card-title mb-2">Delilah</h5>
-                                <p class="card-text mb-2">Delilah is one year old, she spent 1 month in the NICU with an NG tube. She was born at just 32 weeks. Our little girl is strong, full of energy, and curiosity. She explores the world around her with adorable steps and giggles, showing her personality more each day.</p>
-                                <div class="d-flex justify-content-between align-items-center mt-auto">
-                                    <span class="badge badge-secondary">46<sup>th</sup></span>
-                                    <span>8707 votes</span>
+                                <div class="card-body d-flex flex-column text-dark">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <h5 class="card-title text-dark mb-2">Nova</h5>
+                                        <div>
+                                            <i class="bi bi-trophy-fill"></i>1019<sup>th</sup>
+                                        </div>
+                                        <span>42 votes</span>
+                                    </div>
+                                    <p class="card-text text-dark mb-2">This is Nova! She is a year old and has the biggest personality! She loves to steal everyone’s food and knows how to high-five and give fist bumps!</p>
                                 </div>
-                            </div>
                         </a>
                     </div>
                 </div>
@@ -622,13 +671,15 @@
                             <img src="https://cdn.playgrnd.media/v7/img/ph/usr_2883bdfb-adfa-4e20-9956-50766c6d0168/chd_f1bd7a19-ca78-402c-aa4d-d9b170be92f8/ph_e96d3233-9849-440b-9d90-02ee1f33edc9.jpg?w=3840&amp;h=3840&amp;q=45" 
                                  alt="Nova" 
                                  class="card-img-top">
-                            <div class="card-body d-flex flex-column">
-                                <h5 class="card-title mb-2">Nova</h5>
-                                <p class="card-text mb-2">This is Nova! She is a year old and has the biggest personality! She loves to steal everyone’s food and knows how to high-five and give fist bumps!</p>
-                                <div class="d-flex justify-content-between align-items-center mt-auto">
-                                    <span class="badge badge-secondary">1019<sup>th</sup></span>
+                            <div class="card-body d-flex flex-column text-dark">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <h5 class="card-title text-dark mb-2">Nova</h5>
+                                    <div>
+                                        <i class="bi bi-trophy-fill"></i>1019<sup>th</sup>
+                                    </div>
                                     <span>42 votes</span>
                                 </div>
+                                <p class="card-text text-dark mb-2">This is Nova! She is a year old and has the biggest personality! She loves to steal everyone’s food and knows how to high-five and give fist bumps!</p>
                             </div>
                         </a>
                     </div>
@@ -640,7 +691,7 @@
     {{-- SECTION 6 --}}
     <section style="background-color: #f7f7f7;">
         <div class="container">
-            <div class="row p-5">
+            <div class="row p-md-5">
                 <div class="col-md-6 h-100">
                     <div class="container mt-5">
                         <div class="d-flex justify-content-center">
@@ -802,7 +853,7 @@
     </section>
 
     {{-- SECTION 7 --}}
-    <section class="pb-5" style="background-color: #ff255e;">
+    <section class="pb-5 mt-5" style="background-color: #ff255e;">
         <div class="row py-5">
             <div class="col-md-6">
                 <div class="container d-flex justify-content-center h-100">
@@ -813,13 +864,10 @@
                                  alt="Is your child the cutest? Join for free and win up to $5,000!" 
                                  loading="lazy" 
                                  decoding="async" 
-                                 class="position-absolute img-fluid top-0 start-0 w-100" 
+                                 class="position-absolute img-fluid top-0 start-0 w-100 pb-3" 
                                  style="object-fit: cover;">
                         </div>
                     </div>
-                </div>
-                <div class="button-participate text-end">
-                    <a class="btn btn-outline-light btn-lg w-50" href="/participate">Participate</a>
                 </div>
             </div>
             <div class="col-md-6">
@@ -1000,8 +1048,13 @@
                         </div>
                     </div>
                 </div>
-                <div class="button-contest">
-                    <a class="btn btn-light btn-lg w-50" href="/participate">Participate</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="d-flex justify-content-center">
+                    <a class="btn btn-outline-light btn-lg me-2 w-md-25" href="#">Participate</a>
+                    <a class="btn btn-light btn-lg w-md-25" href="#">Participate</a>
                 </div>
             </div>
         </div>
@@ -1312,8 +1365,8 @@
 
         <!-- Copyright and Description -->
         <div class="col-md-12 mb-3 text-center">
-        <p>&copy; 2009-2024 Playground USA Inc. All rights reserved.</p>
-        <p>Do you love your child so much that you'd like to show him off to the entire world? Then come and join Bidiboo, the largest photo contest in the US & UK for babies and children up to 12 years old! With thousands of winners already, your cute child could be next. All you have to do is sign up for free, upload their photo and vote for them. The participants with the most votes will be rewarded with money and a certificate for the cutest baby of the month! Reach the top of the leaderboard by asking loved ones to vote, and you could claim the Jackpot! Bidiboo is more than just a place to compete. It's also a place to connect and create memories with other parents. Register today and you might see your baby be crowned the cutest of the month and become a baby model!</p>
+        <small>&copy; 2009-2024 Playground USA Inc. All rights reserved.</small><br>
+        <small class="text-muted">Do you love your child so much that you'd like to show him off to the entire world? Then come and join Bidiboo, the largest photo contest in the US & UK for babies and children up to 12 years old! With thousands of winners already, your cute child could be next. All you have to do is sign up for free, upload their photo and vote for them. The participants with the most votes will be rewarded with money and a certificate for the cutest baby of the month! Reach the top of the leaderboard by asking loved ones to vote, and you could claim the Jackpot! Bidiboo is more than just a place to compete. It's also a place to connect and create memories with other parents. Register today and you might see your baby be crowned the cutest of the month and become a baby model!</small>
         </div>
 
         <!-- Additional Contests -->
