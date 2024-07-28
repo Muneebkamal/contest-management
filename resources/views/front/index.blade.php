@@ -92,7 +92,7 @@
 
     /* Active navbar style */
     .navbar-custom.active {
-        background-color: #ff0048; /* Active background color */
+        background-color: var(--bs-primary); /* Active background color */
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.308);
     }
 
@@ -103,7 +103,7 @@
 
     /* Additional styles for buttons */
     .btn-custom {
-        background-color: #ff0048;
+        background-color: #ff255e;
         color: #ffffff;
     }
 
@@ -114,7 +114,7 @@
 
     .btn-custom-outline:hover {
         background-color: #ffffff;
-        color: #ff0048;
+        color: #ff255e;
     }
 
     /* Logo styles */
@@ -123,11 +123,18 @@
     }
 
     .custom-input {
-        border: .5px solid gray !important; /* Custom border color */
+        background-color: transparent;
+        border: .5px solid rgba(122, 122, 122, 0.192) !important; /* Custom border color */
         border-radius: 8px; /* Rounded corners */
         padding: 8px !important; /* Padding inside the input */
         width: 100% !important; /* Full width */
         box-sizing: border-box; /* Ensure padding and border are included in the element's total width and height */
+    }
+    .custom-input:focus {
+        /* border-color: var(--bs-primary) !important;  */
+        background-color: var(--bs-priamry);
+        outline: none;
+        box-shadow: none
     }
     .navbar-custom.active #logo-default {
         display: none;
@@ -137,7 +144,7 @@
         display: block;
     }
     .text-primary{
-        color: #ff0048 !important;
+        color: #ff255e !important;
     }
     .home-text{
         font-weight: 700;
@@ -156,7 +163,7 @@
     }
 
     .navbar-custom.active {
-        background-color: #ff0048;
+        background-color: #ff255e;
     }
 
     .navbar-brand h2 {
@@ -178,6 +185,17 @@
             width: 25% !important;
         }
     }
+    .btn{
+        border-radius: 16px !important;
+    }
+    
+    .owl-carousel .owl-nav button.owl-next, .owl-carousel .owl-nav button.owl-prev {
+    padding: 10px !important;
+    background-color: black;
+    color: white;
+    /* box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; */
+    border-radius: 50%;
+    }
 </style>
 @endsection
 
@@ -195,18 +213,18 @@
             <div class="ms-3 collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item mx-3">
-                        <a class="nav-link btn btn-primary px-3 text-white" href="#">Contests</a>
+                        <a class="btn-r nav-link btn btn-light px-3 fw-bold" href="#">Contests</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link btn btn-primary px-3 text-white" href="#">Participate</a>
+                        <a class="btn-r nav-link btn btn-light px-3 fw-bold" href="#">Participate</a>
                     </li>
                 </ul>
                 <div class="search-input me-5 w-25">
                     <input class="custom-input form-control me-2" type="search" placeholder="Search" aria-label="Search">
                 </div>
                 <form class="d-flex me-5">
-                    <button class="btn btn-outline-dark me-2" type="button"><b>Sign in</b></button>
-                    <button class="btn btn-custom text-white" type="button"><b>Sign up</b></button>
+                    <button class="btn btn-light me-2" type="button"><b>Sign in</b></button>
+                    <button class="btn-a btn btn-custom text-white" type="button"><b>Sign up</b></button>
                 </form>
             </div>
         </div>
@@ -249,27 +267,21 @@
     </div>
 
 
-{{-- HOME SECTION --}}
+    {{-- HOME SECTION --}}
 
     <section class="home-section">
-        <div class="container">
-            <div class="row mt-5 pt-5">
+        <div class="">
+            <div class="row mt-5 pt-2">
                 <div class="col-md-7 mt-5">
                         <img alt="Bidiboo" style="width:100%; height:auto;" src="https://cdn.playgrnd.media/v7/img/icons/babies/header-large.jpg?q=45">
                 </div>
-                <div class="col-md-5 mt-5 d-flex flex-column justify-content-center">
-                    <div class="d-flex justify-content">
-                        <div class="content">
-                            <h4 class="text-center home-text">Participate in the biggest</h4>
-                            <h4 class="text-primary text-center home-text">baby photo contest</h4>
-                            <h5 class="text-center text-green home-text1"><span>$100,000</span> of prizes to be won every month!</h5>
-                            <div class="text-center mt-3">
-                                <a href="/participate" class="btn btn-primary btn-block w-75 py-2">Participate</a>
-                            </div>
-                            {{-- <div class="text-center mt-3">
-                                <img class="mr-2" height="30" src="https://cdn.playgrnd.media/v7/img/icons/misc/trustpilot-stars-4-5.svg" alt="Trustpilot"><br>
-                                <span>4.6 / 5 on Trustpilot</span>
-                            </div> --}}
+                <div class="col-md-5 mt-5 position-relative">
+                    <div class="content" style="position: relative;top: 50%;left: 50%;transform: translate(-50%,-50%)"> 
+                        <h4 class="text-center home-text py-2" style="font-size: 30px">Participate in the biggest
+                            <br><span class="text-primary">baby photo contest</span></h4>
+                        <h5 class="text-center text-green home-text1 pb-2"><span>$100,000</span> of prizes to be won every month!</h5>
+                        <div class="text-center mt-3">
+                            <a href="/participate" class="btn btn-primary w-50">Participate</a>
                         </div>
                     </div>
                 </div>
@@ -1322,7 +1334,7 @@
     </section>
 
     <!-- Footer content -->
-  <div class="row m-5 px-5">
+  <div class="row m-4 px-md-5">
     <!-- Social Media Links -->
     <div class="col-md-12 d-flex align-items-center justify-content-center mb-3">
       <p class="mb-1 text-dark fw-bold me-2">Follow us:</p>
@@ -1372,14 +1384,14 @@
         <!-- Additional Contests -->
         <div class="col-md-12">
             <div class="d-flex justify-content-center">
-                <div class="d-flex flex-wrap">
-                    <a class="text-decoration-none text-dark me-2 d-flex" href="https://www.kingpet.com/"><p class="me-2">Check out more contests: </p> KingPet: Dog and Cat Photo Contest</a>
+                <div class="text-center">
+                    <a class="text-decoration-none text-dark me-2 text-center" href="#"><span class="me-2">Check out more contests: </sapn> KingPet: Dog and Cat Photo Contest</a>
                     <span class="text-dark fw-bold me-2">|</span>
-                    <a class="text-decoration-none text-dark me-2" href="https://www.littlemissbeauty.com/">Little Miss Beauty: Child Beauty Pageant</a>
+                    <a class="text-decoration-none text-dark me-2" href="#">Little Miss Beauty: Child Beauty Pageant</a>
                     <span class="text-dark fw-bold me-2">|</span>
-                    <a class="text-decoration-none text-dark me-2" href="https://www.lullapanda.com/">LullaPanda: Child Photo Contest</a>
+                    <a class="text-decoration-none text-dark me-2" href="#">LullaPanda: Child Photo Contest</a>
                     <span class="text-dark fw-bold me-2">|</span>
-                    <a class="text-decoration-none text-dark" href="https://www.pageant.dog/">Pageant Dog: Dog Photo Contest</a>
+                    <a class="text-decoration-none text-dark" href="#">Pageant Dog: Dog Photo Contest</a>
                 </div>
             </div>
         </div>
@@ -1403,13 +1415,17 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script>
-         document.addEventListener('DOMContentLoaded', function () {
-            var navbar = document.querySelector('.navbar-custom');
-            window.addEventListener('scroll', function () {
-                if (window.scrollY > 50) {
-                    navbar.classList.add('active');
+         $(document).ready(function () {
+            var navbar = $('.navbar-custom');
+            $(window).on('scroll', function () {
+                if ($(window).scrollTop() > 50) {
+                    navbar.addClass('active');
+                    $('.btn-r').removeClass('btn-light').addClass('btn-primary');
+                    $('.btn-a').removeClass('btn-custom').addClass('btn-outline-light');
                 } else {
-                    navbar.classList.remove('active');
+                    navbar.removeClass('active');
+                    $('.btn-r').removeClass('btn-primary').addClass('btn-light');
+                    $('.btn-a').removeClass('btn-outline-light').addClass('btn-custom');
                 }
             });
         });
