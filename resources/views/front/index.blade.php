@@ -190,7 +190,7 @@
     }
     
     .owl-carousel .owl-nav button.owl-next, .owl-carousel .owl-nav button.owl-prev {
-    padding: 10px !important;
+    padding: 10px 16px !important;
     background-color: black;
     color: white;
     /* box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; */
@@ -213,7 +213,7 @@
             <div class="ms-3 collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item mx-3">
-                        <a class="btn-r nav-link btn btn-light px-3 fw-bold" href="#">Contests</a>
+                        <a class="btn-r nav-link btn btn-light px-3 fw-bold" href="{{ url('/contest-front') }}">Contests</a>
                     </li>
                     <li class="nav-item">
                         <a class="btn-r nav-link btn btn-light px-3 fw-bold" href="#">Participate</a>
