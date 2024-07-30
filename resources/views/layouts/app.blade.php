@@ -131,6 +131,11 @@
             color: #ffffff;
         }
 
+        .btn-active{
+            background-color: #ff255e;
+            color: #ffffff !important;
+        }
+
         .btn-custom-outline {
             border-color: #ffffff;
             color: #ffffff;
