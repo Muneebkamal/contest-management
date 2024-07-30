@@ -216,7 +216,7 @@
                         <a class="btn-r nav-link btn btn-light px-3 fw-bold" href="{{ url('/contest-front') }}">Contests</a>
                     </li>
                     <li class="nav-item">
-                        <a class="btn-r nav-link btn btn-light px-3 fw-bold" href="#">Participate</a>
+                        <a class="btn-r nav-link btn btn-light px-3 fw-bold" href="{{ url('/participate') }}">Participate</a>
                     </li>
                 </ul>
                 <div class="search-input me-5 w-25">
