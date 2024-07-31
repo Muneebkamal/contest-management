@@ -106,7 +106,7 @@
             background-color: #ff255e;
         }
         .custom-input-nav {
-            background-color: transparent;
+            background-color: transparent !important;
             border: .5px solid rgba(122, 122, 122, 0.192) !important;
             /* Custom border color */
             border-radius: 8px;
@@ -131,6 +131,11 @@
             color: #ffffff;
         }
 
+        .btn-light{
+            background-color: #ffffff !important;
+            color: #000000 !important;
+            border: none;
+        }
         .btn-active{
             background-color: #ff255e;
             color: #ffffff !important;
@@ -185,6 +190,14 @@
                     $('.btn-a').removeClass('btn-outline-light').addClass('btn-custom');
                 }
             });
+
+            var path = window.location.pathname;
+
+            if (path.includes('/contest-front')) {
+                $('#contestLink').addClass('btn-active').removeClass('btn-light');
+            } else if (path.includes('/participate')) {
+                $('#participateLink').addClass('btn-active').removeClass('btn-light');
+            }
         });
     </script>
     @yield('script')

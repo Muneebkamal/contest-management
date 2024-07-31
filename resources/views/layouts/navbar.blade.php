@@ -10,19 +10,27 @@
         <div class="ms-3 collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item mx-3">
-                    <a class="btn-r nav-link btn btn-light px-3 fw-bold {{ Request::is('contest-front') ? 'btn-active' : '' }}" href="{{ url('/contest-front') }}">Contests</a>
+                    <a class="btn-r nav-link btn btn-light px-3 fw-bold" id="contestLink" href="{{ url('/contest-front') }}">Contests</a>
                 </li>
                 <li class="nav-item">
-                    <a class="btn-r nav-link btn btn-light px-3 fw-bold {{ Request::is('participate') ? 'btn-active' : '' }}" href="{{ url('/participate') }}">Participate</a>
+                    <a class="btn-r nav-link btn btn-light px-3 fw-bold" id="participateLink" href="{{ url('/participate') }}">Participate</a>
                 </li>
             </ul>
             <div class="search-input me-5 w-25">
                 <input class="custom-input-nav form-control me-2" type="search" placeholder="Search" aria-label="Search">
             </div>
-            <form class="d-flex me-5">
-                <a href="{{ route('login') }}" class="btn btn-light me-2" type="button"><b>Sign in</b></a>
-                <a href="{{ route('register') }}" class="btn-a btn btn-custom" type="button"><b>Sign up</b></a>
-            </form>
+            @auth
+                <div class="profile">
+                    <a href="{{ route('member',auth()->user()->name) }}" class="text-decoration-none d-flex align-items-center">
+                        <i class="bi bi-person-circle" style="font-size: 2rem; color: #333;"></i>
+                    </a>
+                </div>
+            @else
+                <form class="d-flex me-5">
+                    <a href="{{ route('login') }}" class="btn btn-light me-2" type="button"><b>Sign in</b></a>
+                    <a href="{{ route('register') }}" class="btn-a btn btn-custom" type="button"><b>Sign up</b></a>
+                </form>
+            @endauth
         </div>
     </div>
 </nav>

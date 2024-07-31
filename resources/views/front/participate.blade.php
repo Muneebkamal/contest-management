@@ -383,26 +383,26 @@
                                 </div>
                             </div>
                             <div class="age-section d-none">
-                                <div class="row px-5">
-                                    <h3 class="text-center mb-3">What's his date of birth?</h3>
-                                <div class="col-md-4">
-                                    <!-- Year Dropdown -->
-                                    <select id="yearSelect" class="form-select" aria-label="Select Year">
-                                    <option selected disabled>Year</option>
-                                    </select>
-                                </div>
-                                <div class="col-md-4">
-                                    <!-- Month Dropdown -->
-                                    <select id="monthSelect" class="form-select" aria-label="Select Month">
-                                    <option selected disabled>Month</option>
-                                    </select>
-                                </div>
-                                <div class="col-md-4">
-                                    <!-- Date Dropdown -->
-                                    <select id="dateSelect" class="form-select" aria-label="Select Date">
-                                    <option selected disabled>Date</option>
-                                    </select>
-                                </div>
+                                <div class="row px-5 pb-5">
+                                    <h4 class="text-center mb-3">What's his date of birth?</h4>
+                                    <div class="col-md-4">
+                                        <!-- Year Dropdown -->
+                                        <select id="yearSelect" class="form-select" aria-label="Select Year">
+                                        <option selected disabled>Year</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <!-- Month Dropdown -->
+                                        <select id="monthSelect" class="form-select" aria-label="Select Month">
+                                        <option selected disabled>Month</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <!-- Date Dropdown -->
+                                        <select id="dateSelect" class="form-select" aria-label="Select Date">
+                                        <option selected disabled>Date</option>
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
                             <div class="cp-btn text-center mt-3">
