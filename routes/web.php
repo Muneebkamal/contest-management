@@ -6,6 +6,8 @@ use App\Http\Controllers\Admin\CategoriesController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Admin\ContestController;
+use App\Http\Controllers\memberController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -39,6 +41,9 @@ Route::get('/participate', function () {
 Route::get('/contest-front', function () {
     return view('front.contest');
 });
+Route::get('/member/{name}', [memberController::class, 'index'])->name('member');
+Route::post('/add-profile', [memberController::class, 'store'])->name('add.profile');
+
 Route::get('/contest', [ContestController::class, 'index'])->name('contest');
 Route::get('/contest-add', [ContestController::class, 'create'])->name('contest.add');
 Route::post('/contest-store', [ContestController::class, 'store'])->name('contest.store');

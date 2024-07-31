@@ -19,10 +19,18 @@
             <div class="search-input me-5 w-25">
                 <input class="custom-input-nav form-control me-2" type="search" placeholder="Search" aria-label="Search">
             </div>
-            <form class="d-flex me-5">
-                <a href="{{ route('login') }}" class="btn btn-light me-2" type="button"><b>Sign in</b></a>
-                <a href="{{ route('register') }}" class="btn-a btn btn-custom" type="button"><b>Sign up</b></a>
-            </form>
+            @auth
+                <div class="profile">
+                    <a href="{{ route('member',auth()->user()->name) }}" class="text-decoration-none d-flex align-items-center">
+                        <i class="bi bi-person-circle" style="font-size: 2rem; color: #333;"></i>
+                    </a>
+                </div>
+            @else
+                <form class="d-flex me-5">
+                    <a href="{{ route('login') }}" class="btn btn-light me-2" type="button"><b>Sign in</b></a>
+                    <a href="{{ route('register') }}" class="btn-a btn btn-custom" type="button"><b>Sign up</b></a>
+                </form>
+            @endauth
         </div>
     </div>
 </nav>
