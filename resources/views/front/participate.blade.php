@@ -320,7 +320,7 @@
                                 <button class="btn btn-light text-primary previous w-100">Modify</button>
                             </div>
                             <div class="col-md-6">
-                                <button class="btn btn-primary w-100">Let's Go!</button>
+                                <button type="button" class="btn btn-primary w-100" id="triggerButton">Let's Go!</button>
                             </div>
                         </div>
                     </div>
@@ -351,19 +351,19 @@
                 </div>
                 <div class="row my-5">
                     <div class="col-md-12 mt-3">
-                        <form action="" enctype="multipart/form-data">
+                        <form id="myForm" enctype="multipart/form-data">
                             @csrf
                             <div class="gender-section" style="margin-bottom: 4rem;">
                                 <h4 class="text-center">Is it a boy or a girl?</h4>
                                 <div class="d-flex justify-content-center my-3">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="gender" id="girl">
+                                        <input class="form-check-input" type="radio" name="gender" id="girl" value="girl">
                                         <label class="form-check-label me-4" for="girl">
                                             girl
                                         </label>
                                     </div>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="gender" id="boy">
+                                        <input class="form-check-input" type="radio" name="gender" id="boy" value="boy">
                                         <label class="form-check-label" for="boy">
                                             boy
                                         </label>
@@ -373,13 +373,13 @@
                             <div class="name-section d-none pb-2">
                                 <h4 class="text-center">What's his firstname?</h4>
                                 <div class="px-5">
-                                    <input type="text" id="childName" class="custom-input form-control" placeholder="First name of your child" required>
+                                    <input type="text" id="childName" name="name" class="custom-input form-control" placeholder="First name of your child" required>
                                 </div>
                             </div>
                             <div class="img-section d-none">
                                 <h3 class="text-center mb-5" style="margin: 0px; font-weight: 700; font-size: 1.3rem; line-height: 1.5;">Now upload fsfd's photo</h3>
                                 <div class="px-5">
-                                    <input type="file" id="fileInput" accept="image/*" class="d-none r-file" required>
+                                    <input type="file" id="fileInput" name="image" accept="image/*" class="d-none r-file" required>
                                 </div>
                             </div>
                             <div class="age-section d-none">
@@ -408,6 +408,7 @@
                             <div class="cp-btn text-center mt-3">
                                 <button type="button" class="btn btn-primary w-75 continue">Continue</button>
                                 <button type="button" class="btn btn-light text-primary fw-bold w-75 previous mt-2 d-none">Previous</button>
+                                <button type="submit" class="d-none" id="hiddenSubmitButton">Submit</button>
                             </div>
                             <small class="d-flex justify-content-center mt-2 px-3">
                                 <i class="bi bi-lock"></i>We do not resell your photos or personal data.
@@ -517,7 +518,53 @@
             }
         });
 
+        $('#myForm').submit(function(e) {
+            e.preventDefault();
+            
+            var formData = new FormData(this);
+            var year = $('#yearSelect').val();
+            var month = ('0' + $('#monthSelect').val()).slice(-2); // Add leading zero
+            var day = ('0' + $('#dateSelect').val()).slice(-2); // Add leading zero
+            var birthdate = day + '-' + month + '-' + year;
+            formData.append('birthdate', birthdate);
 
+            $.ajax({
+                url: '{{ route("children.store") }}',
+                type: 'POST',
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function(response) {
+                    // Handle success
+                    console.log(response);
+                    window.location.reload();
+                },
+                error: function(xhr, status, error) {
+                    // Handle error
+                    console.error(error);
+                }
+            });
+        });
+
+        $('#triggerButton').click(function() {
+            $.ajax({
+                url: '{{ route('check-auth') }}', // Use the route name if you have named your routes
+                method: 'GET',
+                success: function(response) {
+                    if (response.authenticated) {
+                        // User is authenticated, submit the form
+                        $('#hiddenSubmitButton').click();
+                    } else {
+                        // User is not authenticated, redirect to login page
+                        window.location.href = '{{ route('login') }}'; // Adjust this to your login route
+                    }
+                },
+                error: function() {
+                    // Handle error case, e.g., show an error message
+                    alert('An error occurred. Please try again.');
+                }
+            });
+        });
 
 
         // Trigger file input click when icon-img is clicked

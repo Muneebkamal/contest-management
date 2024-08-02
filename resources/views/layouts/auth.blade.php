@@ -11,6 +11,28 @@
      <link rel="stylesheet" href="{{ asset('assets/css/custom-bootstrap.css') }}">
         @yield('styles')
         <style>
+
+        @media (max-width: 576px) {
+            .mob-img {
+                box-sizing: border-box;
+                margin: 0px;
+                flex-direction: row;
+                flex-basis: 100%;
+                -webkit-box-flex: 0;
+                flex-grow: 0;
+                max-width: 100%;
+                max-height: 300px !important;
+                position: relative;
+                background-repeat: no-repeat;
+                background-size: contain !important;
+                background-position: center center;
+                background-color: rgb(164, 230, 250);
+            }
+            .brand-2 {
+                position: relative;
+                top: -50px;
+            }
+        }
             .color-box{
                 background-color: var(--bs-primary);
                 border-radius: 50%;

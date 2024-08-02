@@ -60,8 +60,13 @@
 
     <div class="row">
         <div class="col-md-6 h-100">
-            <div class="side-img">
+            <div class="side-img mob-img">
                 {{-- <img class="img-fluid" src="https://cdn.playgrnd.media/v7/img/icons/babies/auth-bg.jpg?w=960&h=1280&q=60" alt=""> --}}
+            </div>
+            <div class="brand-2 d-flex justify-content-center d-md-none">
+                <div class="color-box mb-4">
+                    <img  class="img-fluid p-2" src="https://cdn.playgrnd.media/v7/img/icons/babies/icon-transparent.png?sharp=0&sat=100&w=240&h=240" alt="" style="border: 2px solid #fff; border-radius: 50%;">
+                </div>
             </div>
         </div>
         <div class="col-md-6">
@@ -69,7 +74,7 @@
                 <div class="col-md-12 d-flex justify-content-center">
                     <div class="content mt-4">
                         <div class="brand d-flex justify-content-center">
-                            <div class="color-box mb-4">
+                            <div class="color-box mb-4 d-none d-md-block">
                                 <img  class="img-fluid p-2" src="https://cdn.playgrnd.media/v7/img/icons/babies/icon-transparent.png?sharp=0&sat=100&w=240&h=240" alt="">
                             </div>
                         </div>

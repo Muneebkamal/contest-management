@@ -150,6 +150,34 @@
             background-color: #ffffff;
             color: #ff255e;
         }
+        .btn:focus{
+            outline: none;
+            box-shadow: none;
+        }
+        .fw-bold{
+            font-weight: 500 !important;
+        }
+        .dropdown-menu {
+            right: 25px;
+            top: 70px;
+            border: none;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+        }
+        .dropdown-menu::before {
+            content: "";
+            display: block;
+            position: absolute;
+            top: 0px;
+            right: 14px;
+            width: 10px;
+            height: 10px;
+            background-color: rgb(255, 255, 255);
+            transform: translateY(-50%) rotate(45deg);
+            z-index: 0;
+        }
+        .dropdown-toggle::after {
+            display: none;
+        }
     </style>
     @yield('styles')
 </head>
@@ -162,9 +190,10 @@
         @include('layouts.footer')
     </div>
 
-
+    
     <script src="https://cdn-script.com/ajax/libs/jquery/3.7.1/jquery.js"></script>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    {{-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script> --}}
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
     <!-- Owl Carousel JS -->
@@ -188,6 +217,8 @@
                     navbar.removeClass('active');
                     $('.btn-r').removeClass('btn-primary').addClass('btn-light');
                     $('.btn-a').removeClass('btn-outline-light').addClass('btn-custom');
+                    $('#contestLink').removeClass('btn-light');
+                    $('#participateLink').removeClass('btn-light');
                 }
             });
 

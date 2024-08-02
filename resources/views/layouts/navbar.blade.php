@@ -1,5 +1,5 @@
 <!-- Navbar for large screens -->
-<nav class="navbar navbar-expand-lg navbar-custom fixed-top px-3 d-none d-lg-block">
+<nav class="navbar navbar-expand-lg navbar-custom fixed-top px-3 d-none d-lg-block pt-0 pb-0">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">
             <h2>LOGO</h2>
@@ -20,10 +20,43 @@
                 <input class="custom-input-nav form-control me-2" type="search" placeholder="Search" aria-label="Search">
             </div>
             @auth
-                <div class="profile">
-                    <a href="{{ route('member',auth()->user()->name) }}" class="text-decoration-none d-flex align-items-center">
-                        <i class="bi bi-person-circle" style="font-size: 2rem; color: #333;"></i>
+                <div class="profile ms-auto">
+                    <a href="#" class="text-decoration-none d-flex align-items-center dropdown-toggle" id="profileDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        @if(auth()->user()->image)
+                            <img src="{{ asset('storage/' . auth()->user()->image) }}" alt="Profile Image" class="rounded-circle" style="width: 37px; height: 37px; object-fit: cover;">
+                        @else
+                            <i class="bi bi-person-circle" style="font-size: 2rem; color: #333;"></i>
+                        @endif
                     </a>
+                    <ul class="dropdown-menu" aria-labelledby="profileDropdown">
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center p-2" href="{{ route('member', auth()->user()->name) }}">
+                                @if(auth()->user()->image)
+                                <img src="{{ asset('storage/' . auth()->user()->image) }}" alt="Profile Image" class="rounded-circle" style="width: 30px; height: 30px; object-fit: cover;">
+                                @else
+                                    <i class="bi bi-person-circle" style="font-size: 2rem; color: #333;"></i>
+                                @endif
+                                <h5 class="ms-2">{{ auth()->user()->name }}</h5>
+                            </a>
+                            @foreach($children as $child)
+                                <a class="dropdown-item d-flex align-items-center p-2" href="{{ route('member', auth()->user()->name) }}">
+                                    @if($child->image)
+                                    <img src="{{ asset('images/' . $child->image) }}" alt="Child Image" class="rounded-circle" style="width: 30px; height: 30px; object-fit: cover;">
+                                    @else
+                                        <i class="bi bi-person-circle" style="font-size: 2rem; color: #333;"></i>
+                                    @endif
+                                    <h5 class="ms-2">{{ $child->name }}</h5>
+                                </a>
+                            @endforeach
+                        </li>
+                        <hr class="m-0">
+                        <li>
+                            <form method="POST" action="{{ route('logout') }}">
+                                @csrf
+                                <button type="submit" class="dropdown-item"><i class="bi bi-box-arrow-right fs-5 me-2"></i>Logout</button>
+                            </form>
+                        </li>
+                    </ul>
                 </div>
             @else
                 <form class="d-flex me-5">
@@ -58,10 +91,22 @@
                 <i class="bi bi-trophy bottom-nav-icon"></i>
             </a>
         </div>
+        @auth
         <div class="col">
-            <a class="text-decoration-none text-dark" href="#">
-                <i class="bi bi-person-circle bottom-nav-icon"></i>
+            <a href="{{ route('member', auth()->user()->name) }}" class="text-decoration-none">
+                @if(auth()->user()->image)
+                    <img src="{{ asset('storage/' . auth()->user()->image) }}" alt="Profile Image" class="rounded-circle" style="width: 25px; height: 25px; object-fit: cover;">
+                @else
+                    <i class="bi bi-person-circle bottom-nav-icon"></i>
+                @endif
             </a>
         </div>
+        @else
+            <div class="col">
+                <a class="text-decoration-none text-dark" href="{{ route('login') }}">
+                    <i class="bi bi-person-circle bottom-nav-icon"></i>
+                </a>
+            </div>
+        @endauth    
     </div>
 </div>
