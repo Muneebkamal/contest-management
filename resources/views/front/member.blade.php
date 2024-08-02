@@ -4,9 +4,16 @@
 <style>
     @media (max-width: 576px) {
             .layout{
-                min-height: 88vh;
+                min-height: 75vh;
                 background-color: #f7f7f7;
                 position: relative;
+            }
+                .profile-section {
+                position: absolute;
+                width: 100%;
+                height: auto;
+                left: 50%;
+                transform: translateX(-50%);
             }
         }
         /* Styles for large screens (desktops) */
@@ -16,15 +23,16 @@
                 background-color: #f7f7f7;
                 position: relative;
             }
+                .profile-section {
+                position: absolute;
+                width: 544px;
+                top: 6rem;
+                height: auto;
+                left: 50%;
+                transform: translateX(-50%);
+            }
         }
-        .profile-section {
-            position: absolute;
-            width: 444px;
-            top: 6rem;
-            height: auto;
-            left: 50%;
-            transform: translateX(-50%);
-        }
+        
         .profile-card{
             border-radius: 30px;
             border: transparent;
@@ -51,12 +59,6 @@
 @endsection
 
 @section('content')
-    <div class="container-fluid fixed-top p-2 d-lg-none w-100" style="background-color: #ff255e;">
-        <a class="text-dark text-center text-decoration-none fw-bold" href="#">
-            <h2 class="m-0">Participate</h2>
-        </a>
-    </div>
-
     <section class="layout">
         <div class="profile-section d-flex justify-content-center">
             <div class="card profile-card w-100">
@@ -72,12 +74,19 @@
                             </form>
                         </div>
                     </div>
+                    <hr>
                     <h5 class="me-2">Children</h5>
                     <div class="profile-images">
                         <div class="row">
+                            @foreach($children as $child)
                             <div class="col-md-6">
-                                <img src="https://www.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png" alt="" class="img-fluid rounded">
+                                @if($child->image)
+                                    <img src="{{ asset('images/' . $child->image) }}" alt="Child Image" class="img-fluid h-100">
+                                @else
+                                    <img src="https://www.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png" alt="" class="img-fluid rounded">
+                                @endif
                             </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>

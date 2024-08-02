@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\CategoriesController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Admin\ContestController;
+use App\Http\Controllers\childrenController;
 use App\Http\Controllers\memberController;
 
 /*
@@ -52,3 +53,9 @@ Route::post('/contest-update/{id}', [ContestController::class, 'update'])->name(
 Route::post('/contest-delete/{id}', [ContestController::class, 'destroy'])->name('contest.delete');
 
 Route::resource('categories', CategoriesController::class);
+
+
+Route::resource('children', childrenController::class);
+Route::get('/check-auth', function() {
+    return response()->json(['authenticated' => Auth::check()]);
+})->name('check-auth');
