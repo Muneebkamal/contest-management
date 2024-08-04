@@ -17,10 +17,13 @@ class ViewServiceProvider extends ServiceProvider
     {
         // Share data with all views, handling authenticated and non-authenticated cases
         View::composer('*', function ($view) {
+            $children = collect(); // Start with an empty collection
+
             if (auth()->check()) {
                 $children = Child::where('user_id', auth()->id())->get();
-                $view->with('children', $children);
             }
+
+            $view->with('children', $children);
         });
     }
 

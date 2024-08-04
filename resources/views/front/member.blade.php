@@ -78,15 +78,18 @@
                     <h5 class="me-2">Children</h5>
                     <div class="profile-images">
                         <div class="row">
-                            @foreach($children as $child)
-                            <div class="col-md-6">
-                                @if($child->image)
-                                    <img src="{{ asset('images/' . $child->image) }}" alt="Child Image" class="img-fluid h-100">
-                                @else
-                                    <img src="https://www.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png" alt="" class="img-fluid rounded">
-                                @endif
-                            </div>
-                            @endforeach
+                            @if($children->isEmpty())
+                            @else
+                                @foreach($children as $child)
+                                <div class="col-md-6">
+                                    @if($child->image)
+                                        <img src="{{ asset('storage/' . $child->image) }}" alt="Child Image" class="img-fluid h-100">
+                                    @else
+                                        <img src="https://www.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png" alt="" class="img-fluid rounded">
+                                    @endif
+                                </div>
+                                @endforeach
+                            @endif
                         </div>
                     </div>
                 </div>

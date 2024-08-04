@@ -38,16 +38,19 @@
                                 @endif
                                 <h5 class="ms-2">{{ auth()->user()->name }}</h5>
                             </a>
-                            @foreach($children as $child)
-                                <a class="dropdown-item d-flex align-items-center p-2" href="{{ route('member', auth()->user()->name) }}">
-                                    @if($child->image)
-                                    <img src="{{ asset('images/' . $child->image) }}" alt="Child Image" class="rounded-circle" style="width: 30px; height: 30px; object-fit: cover;">
-                                    @else
-                                        <i class="bi bi-person-circle" style="font-size: 2rem; color: #333;"></i>
-                                    @endif
-                                    <h5 class="ms-2">{{ $child->name }}</h5>
-                                </a>
-                            @endforeach
+                            @if($children->isEmpty())
+                            @else
+                                @foreach($children as $child)
+                                    <a class="dropdown-item d-flex align-items-center p-2" href="{{ route('children.show', $child->unique_name) }}">
+                                        @if($child->image)
+                                        <img src="{{ asset('storage/' . $child->image) }}" alt="Child Image" class="rounded-circle" style="width: 30px; height: 30px; object-fit: cover;">
+                                        @else
+                                            <i class="bi bi-person-circle" style="font-size: 2rem; color: #333;"></i>
+                                        @endif
+                                        <h5 class="ms-2">{{ $child->name }}</h5>
+                                    </a>
+                                @endforeach
+                            @endif
                         </li>
                         <hr class="m-0">
                         <li>

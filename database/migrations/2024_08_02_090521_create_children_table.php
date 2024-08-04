@@ -14,10 +14,14 @@ return new class extends Migration
         Schema::create('children', function (Blueprint $table) {
             $table->id();
             $table->integer('user_id');
-            $table->string('gender');
-            $table->string('name');
-            $table->string('image');
-            $table->date('birthdate');
+            $table->string('gender')->nullable();
+            $table->string('name')->nullable();
+            $table->string('unique_name')->nullable();
+            $table->string('image')->nullable();
+            $table->date('birthdate')->nullable();
+            $table->integer('votes')->default(0);
+            $table->string('description')->nullable();
+            $table->string('current_earning')->nullable();
             $table->timestamps();
         });
     }

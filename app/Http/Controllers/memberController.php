@@ -50,22 +50,28 @@ class memberController extends Controller
                         unlink($existingImagePath);
                     }
                 }
-    
+        
                 $file = $request->file('profile_image');
                 $filename = time() . '.' . $file->getClientOriginalExtension();
-                $path = $file->storeAs('uploads/profiles', $filename, 'public');
-    
+        
+                // Create a user-specific folder name
+                $folder = 'user_img/user_' . $user->id;
+        
+                // Store the file in the user-specific folder
+                $path = $file->storeAs($folder, $filename, 'public');
+        
                 // Update user's profile image
-                $user->image = 'uploads/profiles/' . $filename; // Ensure the path matches the saved one
+                $user->image = $path; // Save the relative path
                 $user->save();
-    
+        
                 return response()->json(['success' => 'Profile image updated successfully']);
             } catch (\Exception $e) {
                 return response()->json(['error' => 'File upload failed', 'message' => $e->getMessage()], 500);
             }
         } else {
             return response()->json(['error' => 'No file uploaded'], 400);
-        }
+        }        
+        
     }
 
     /**
