@@ -28,7 +28,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -63,11 +63,27 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $uniqueName = $this->generateUniqueName($data['name']);
         return User::create([
             'name' => $data['name'],
+            'unique_name' => $uniqueName,
             'role' => "user",
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+    }
+    private function generateUniqueName($name)
+    {
+        // Convert the name to lowercase and remove spaces
+        $baseName = strtolower(preg_replace('/\s+/', '', $name));
+        // Append 2 or 3 random digits
+        $uniqueName = $baseName . random_int(10, 99); // 2 digits
+
+        // Ensure the unique name is not already in use
+        while (User::where('unique_name', $uniqueName)->exists()) {
+            $uniqueName = $baseName . random_int(100, 999); // 3 digits
+        }
+
+        return $uniqueName;
     }
 }

@@ -55,7 +55,7 @@ Route::post('/contest-delete/{id}', [ContestController::class, 'destroy'])->name
 Route::resource('categories', CategoriesController::class);
 
 
-Route::resource('children', childrenController::class);
+Route::resource('children', childrenController::class)->parameters(['children' => 'unique_name']);
 Route::get('/check-auth', function() {
     return response()->json(['authenticated' => Auth::check()]);
 })->name('check-auth');
